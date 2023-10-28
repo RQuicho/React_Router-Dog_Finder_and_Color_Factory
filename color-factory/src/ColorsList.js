@@ -6,7 +6,7 @@ const ColorsList = ({colors}) => {
     <div>
       <div style={{backgroundColor: 'black', color: 'white'}}>
         <h1>Welcome to the color factory</h1>
-        {/* <h2><Link to='/colors/new'>Add a color</Link></h2> */}
+        <h2><Link to='/colors/new' style={{color: 'white'}}>Add a color</Link></h2>
       </div>
       <p>Please select a color</p> 
       <ul>

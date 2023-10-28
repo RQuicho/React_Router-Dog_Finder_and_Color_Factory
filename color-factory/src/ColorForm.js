@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ColorForm = () => {
+const ColorForm = ({addColor}) => {
   const [formData, setFormData] = useState('');
-  const [data, setData] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -12,19 +13,21 @@ const ColorForm = () => {
     }));
   }
 
-  const addData = (newData) => {
-    setData(newData);
-  }
+  // const addData = (newData) => {
+  //   setData(newData);
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addData({...formData});
+    addColor({...formData});
     setFormData('');
+    navigate('/colors');
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <label htmlFor='name'>Color name </label>
         <input
           id='name'
           type='text'
@@ -33,7 +36,15 @@ const ColorForm = () => {
           value={formData.name}
           onChange={handleChange}
         />
-        <input type='color' />
+        <br/>
+        <label htmlFor='color'>Color value </label>
+        <input 
+          name='color'
+          type='color'
+          value={formData.color}
+          onChange={handleChange}
+        />
+        <br/>
         <button>Add Color</button>
       </form>
     </div>

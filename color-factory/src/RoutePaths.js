@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 import ColorsList from './ColorsList';
 import ColorDetail from './ColorDetail';
+import ColorForm from './ColorForm';
 
-const RoutePaths = ({colors}) => {
+const RoutePaths = () => {
+  const [colors, setColors] = useState(['red', 'green', 'blue']);
+  const addColor = (newColor) => {
+    setColors(colors => [newColor.name, ...colors]);
+  }
+
   return (
     <Routes>
       <Route path='/colors' element={<ColorsList colors={colors} />}></Route>
@@ -15,6 +21,7 @@ const RoutePaths = ({colors}) => {
         >
         </Route>
       ))}
+      <Route path='/colors/new' element={<ColorForm addColor={addColor}/>}></Route>
       <Route path='*' element={<Navigate to='/colors' />} />
     </Routes>
   )
