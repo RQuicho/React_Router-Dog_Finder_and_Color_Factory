@@ -11,8 +11,8 @@ const ColorsList = ({colors}) => {
       <p>Please select a color</p> 
       <ul>
         {colors.map(color => (
-          <li key={color}>
-            <Link to={`/colors/${color}`}>{color}</Link>
+          <li key={color.name}>
+            <Link to={`/colors/${color.name}`}>{color.name}</Link>
           </li>
         ))}
       </ul>

@@ -5,9 +5,16 @@ import ColorDetail from './ColorDetail';
 import ColorForm from './ColorForm';
 
 const RoutePaths = () => {
-  const [colors, setColors] = useState(['red', 'green', 'blue']);
+  // const [colors, setColors] = useState(['red', 'green', 'blue']);
+  const initialState = [
+    {name: 'red', color: '#ff0000'},
+    {name: 'green', color: '#008000'},
+    {name: 'blue', color: '#0000ff'},
+  ]
+  const [colors, setColors] = useState(initialState);
+
   const addColor = (newColor) => {
-    setColors(colors => [newColor.name, ...colors]);
+    setColors(colors => [{...newColor}, ...colors]);
   }
 
   return (
@@ -15,9 +22,9 @@ const RoutePaths = () => {
       <Route path='/colors' element={<ColorsList colors={colors} />}></Route>
       {colors.map(color => (
         <Route
-          key={color}
-          path={`/colors/${color}`}
-          element={<ColorDetail color={color} />}
+          key={color.name}
+          path={`/colors/${color.name}`}
+          element={<ColorDetail color={color.color} name={color.name} />}
         >
         </Route>
       ))}

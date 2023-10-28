@@ -13,9 +13,6 @@ const ColorForm = ({addColor}) => {
     }));
   }
 
-  // const addData = (newData) => {
-  //   setData(newData);
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
